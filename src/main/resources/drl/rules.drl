@@ -1,0 +1,14 @@
+import models.TestModel
+
+rule "test rule"
+
+when
+
+    $t : TestModel()
+    eval($t.isValid())
+
+then
+
+    System.out.println($t.getName() + " is ready");
+
+end
