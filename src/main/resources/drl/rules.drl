@@ -1,4 +1,5 @@
 import models.TestModel
+import models.Person
 
 rule "test rule"
 
@@ -11,4 +12,20 @@ then
 
     System.out.println($t.getName() + " is ready");
 
+end
+
+rule "Name is Bob"
+       salience 10
+ when
+  $p : Person( name == "Bob", $age : age )
+ then
+  insert( "Bob is "+$age+" years old." );
+end
+
+rule "Person is 35 years old"
+       salience 5
+ when
+  Person( age == 35, $name : name )
+ then
+  insert( "Person is 35 years old" );
 end

@@ -14,7 +14,7 @@ public class Rules {
             KieContainer kContainer = kieServices.getKieClasspathContainer();
             KieSession kSession = kContainer.newKieSession("ksession-rule");
             kSession.insert(testModel);
-            kSession.fireAllRules();
+            kSession.fireAllRules(10);
         }
         catch (Throwable t) {
             t.printStackTrace();
