@@ -1,10 +1,9 @@
 package models;
 
 public class Person {
+    private String name;
 
-    public String name;
-
-    public int age;
+    private int age;
 
     public Person(String name, int age){
         this.name = name;
@@ -12,7 +11,7 @@ public class Person {
     }
 
     public int getAge() {
-        return age;
+        return this.age;
     }
 
     public void setAge(int age) {
@@ -20,7 +19,7 @@ public class Person {
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public void setName(String name) {

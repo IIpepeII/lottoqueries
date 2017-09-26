@@ -2,6 +2,8 @@ package rules;
 
 import models.Person;
 import org.drools.core.base.RuleNameEqualsAgendaFilter;
+import org.drools.core.marshalling.impl.ProtobufMessages;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeAll;
 import org.kie.api.KieServices;
@@ -12,6 +14,9 @@ import org.kie.api.runtime.KieSession;
 import org.mockito.ArgumentCaptor;
 
 import java.util.List;
+
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Matchers.any;
@@ -133,12 +138,14 @@ public class TestRules {
 
         // check the rule name for the first rule to fire
         AfterMatchFiredEvent first = events.get( 0 );
-        assertThat( first.getActivation().getRule().getName(),
+        assertThat( first.getMatch().getRule().getName(),
                 is("Name is Bob") );
 
+        Assertions.assertEquals(first.getMatch().getRule().getName(), "");
         // check the rule name of the second rule to fire
-        AfterActivationFiredEvent second = events.get( 1 );
-        Assert.assertThat( second.getActivation().getRule().getName(),
+        AfterMatchFiredEvent second = events.get( 1 );
+        assertThat( second.getMatch().getRule().getName(),
                 is("Person is 35 years old") );
     }
+
 }
