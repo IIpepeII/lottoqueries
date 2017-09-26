@@ -138,14 +138,10 @@ public class TestRules {
 
         // check the rule name for the first rule to fire
         AfterMatchFiredEvent first = events.get( 0 );
-        assertThat( first.getMatch().getRule().getName(),
-                is("Name is Bob") );
-
-        Assertions.assertEquals(first.getMatch().getRule().getName(), "");
+        assertEquals( first.getMatch().getRule().getName(),"Name is Bob" );
         // check the rule name of the second rule to fire
         AfterMatchFiredEvent second = events.get( 1 );
-        assertThat( second.getMatch().getRule().getName(),
-                is("Person is 35 years old") );
+        assertEquals( second.getMatch().getRule().getName(), "Person is 35 years old");
     }
 
 }
